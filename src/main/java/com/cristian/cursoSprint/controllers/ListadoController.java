@@ -5,7 +5,7 @@
  */
 package com.cristian.cursoSprint.controllers;
 
-import com.cristian.cursoSprint.domain.VideoJuego;
+import com.cristian.cursoSprint.domain.Videojuego;
 import com.cristian.cursoSprint.service.VideojuegoServide;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -32,7 +32,7 @@ public class ListadoController {
     @RequestMapping("/")
     public String listarVideoJuegos(Model model){
         //enviar una lista de los videojuegos destacados
-        List<VideoJuego> juegoList = videojuegoServide.buscarDestacados();
+        List<Videojuego> juegoList = videojuegoServide.buscarDestacados();
         model.addAttribute("juegos", juegoList);
         //retorna la vista de todos los videojugos
         return "listado";
