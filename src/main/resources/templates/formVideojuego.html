@@ -16,11 +16,11 @@
         <nav class="navbar navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/}">
-                    <img src="img/icon_game.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+                    <img th:src="@{/img/icon_game.png}" alt="" width="30" height="30" class="d-inline-block align-text-top">
                     Game Store
                 </a>
                 <form th:action="@{/buscar}" class="form-inline my-2 my-lg-0">
-                    <input autofocus="autofocus" name="q" class="form-control mr-sm-2" type="search" th:placeholder="${param.q}" aria-label="Search">
+                    <input name="q" class="form-control mr-sm-2" type="search" th:placeholder="${param.q}" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>
@@ -28,26 +28,24 @@
 
         <div class="container mt-4 vj-destacados">
             <div class="row">
-                <div class="col col-md-12 text-right mb-4">
-                    <a th:href="@{/videojuegos/crear}" class="btn btn-outline-success">Crear Videojuego</a>
-                </div>
-            </div>
-            <div class="row">
-                <div th:each ="juego : ${juegos}" class="col-md-3 mb-4">
-                    <div class="card">
-                        <img th:src="${juego.imagen_url}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 th:text="${juego.nombre}" class="card-title"></h5>
-                            <p>
-                                <a th:href="@{/videojuegosPorDistribuidor(distribuidorId=${juego.distribuidor.id})}" class="badge badge-pill badge-warning" th:text="${juego.distribuidor.nombre}">Warning</a>
-                            </p>
-                            <p th:text="${juego.descripcion}" class="card-text"></p>
-
+                <div class="col-md-12">
+                    <h1>Nuevo Videojuego</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input autofocus="autofocus" type="text" class="form-control" id="nombre" placeholder="Nombre del videjuego">
                         </div>
-                        <div class="card-footer text-muted">
-                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <textarea class="form-control" id="descripcion" rows="3"></textarea>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="imagen_url">URL de la imagen</label>
+                            <input type="text" class="form-control" id="imagen_url" placeholder="URL de la imagen">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>
