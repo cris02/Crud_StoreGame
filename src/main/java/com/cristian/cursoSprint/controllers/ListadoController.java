@@ -37,4 +37,11 @@ public class ListadoController {
         //retorna la vista de todos los videojugos
         return "listado";
     }
+    
+    @RequestMapping("/videojuegosPorDistribuidor")
+    public String listarVideojuegosPorDistribuidor(int distribuidorId, Model model){
+        List<Videojuego> listJuegosDis = videojuegoServide.buscarPorDistribuidor(distribuidorId);
+         model.addAttribute("juegos", listJuegosDis);
+       return "listado";
+    }
 }

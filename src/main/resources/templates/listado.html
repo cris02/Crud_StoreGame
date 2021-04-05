@@ -29,6 +29,9 @@
                         <img th:src="${juego.imagen_url}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 th:text="${juego.nombre}" class="card-title"></h5>
+                            <p>
+                                <span class="badge badge-pill badge-warning" th:text="${juego.distribuidor.nombre}">Warning</span>
+                            </p>
                             <p th:text="${juego.descripcion}" class="card-text"></p>
                             
                         </div>

@@ -17,9 +17,15 @@ public class VideojuegoServide {
         this.videojuegoRepository = videojuegoRepository;
     }
 
+    //metodo para buscar todos los videojuegos
     public List<Videojuego> buscarDestacados() {
         //retorna los videojuegos disponibles
-        return videojuegoRepository.findAll();
+        return videojuegoRepository.buscarTodos();
 
+    }
+    
+    //metodo para filtrar los juegos por distribuidor
+    public List<Videojuego> buscarPorDistribuidor(int distribuidorId){
+        return videojuegoRepository.buscarPorDistribuidor(distribuidorId);
     }
 }

@@ -1,5 +1,6 @@
 
 drop table if exists videojuego;
+drop table if exists distribuidor;
 
 create table videojuego (
     id int primary key auto_increment,
@@ -26,3 +27,25 @@ videojuego de 2012, Borderlands 2.', 'https://i2.wp.com/www.gameoverla.com/wp-co
 'https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Subnautica.jpg'),
 ('Firewatch', 'Firewatch es un videojuego de aventura y misterio en primera persona desarrollado por Campo Santo y producido por Campo Santo y Panic.', 
 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2016/02/563168-firewatch-analisis-ps4-pc.jpg?itok=k5yrM3cm');
+
+create table distribuidor (
+    id int primary key auto_increment,
+    nombre varchar(200) not null,
+    sitioWeb varchar(500)
+);
+
+insert into distribuidor(nombre, sitioWeb)
+values
+('2K', 'https://2k.com/en-US/'),
+('Focus Home Interactive', ''),
+('Thekla', 'https://orthodoxwiki.org/Thekla_the_Protomartyr'),
+('Numbre One', 'https://www.minijuegos.com/juego/number-1'),
+('505 Gamer', 'https://505games.com/'),
+('Campo Santo', 'https://www.camposanto.com/');
+
+alter table videojuego 
+add column distribuidor_id int,
+add foreign key (distribuidor_id) references distribuidor(id);
+
+alter table videojuego
+modify distribuidor_id int not null;
